@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doktor Ceyda'nın Doğum Günü 🎉</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .title {
+            text-align: center;
+            color: #e91e63;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .chat-container {
+            margin-bottom: 40px;
+        }
+
+        .message {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .message.right {
+            flex-direction: row-reverse;
+        }
+
+        .cat-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 4px solid #ff6b9d;
+            margin: 0 15px;
+            object-fit: cover;
+        }
+
+        .message-bubble {
+            background: #fff;
+            padding: 15px 20px;
+            border-radius: 20px;
+            max-width: 60%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .message.right .message-bubble {
+            background: #ff6b9d;
+            color: white;
+        }
+
+        .message-bubble::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+        }
+
+        .message:not(.right) .message-bubble::before {
+            left: -20px;
+            border-right-color: #fff;
+        }
+
+        .message.right .message-bubble::before {
+            right: -20px;
+            border-left-color: #ff6b9d;
+        }
+
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .celebration-button {
+            background: linear-gradient(45deg, #ff6b9d, #c44569);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .celebration-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .celebration-content {
+            display: none;
+            text-align: center;
+            margin-top: 30px;
+            animation: slideIn 0.5s ease-in;
+        }
+
+        .celebration-content.active {
+            display: block;
+        }
+
+        .celebration-image {
+            max-width: 300px;
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .celebration-text {
+            font-size: 1.5em;
+            color: #e91e63;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .emoji {
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+                margin: 10px;
+            }
+            
+            .title {
+                font-size: 1.8em;
+                margin-bottom: 20px;
+            }
+            
+            .message-bubble {
+                max-width: 85%;
+                padding: 12px 15px;
+                font-size: 0.9em;
+            }
+            
+            .cat-image {
+                width: 60px;
+                height: 60px;
+                margin: 0 10px;
+            }
+            
+            .buttons-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .celebration-button {
+                width: 100%;
+                max-width: 300px;
+                padding: 12px 20px;
+                font-size: 1.1em;
+            }
+            
+            .celebration-image {
+                max-width: 250px;
+            }
+            
+            .celebration-text {
+                font-size: 1.2em;
+                padding: 0 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 12px;
+                border-radius: 15px;
+            }
+            
+            .title {
+                font-size: 1.5em;
+                margin-bottom: 15px;
+            }
+            
+            .message-bubble {
+                max-width: 90%;
+                padding: 10px 12px;
+                font-size: 0.85em;
+            }
+            
+            .cat-image {
+                width: 50px;
+                height: 50px;
+                margin: 0 8px;
+            }
+            
+            .celebration-button {
+                padding: 10px 15px;
+                font-size: 1em;
+            }
+            
+            .celebration-image {
+                max-width: 200px;
+            }
+            
+            .celebration-text {
+                font-size: 1.1em;
+                line-height: 1.3;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">🎂 Doktor Ceyda'nın Doğum Günü! 🎂</h1>
+        
+        <div class="chat-container">
+            <div class="message">
+                <img src="kedi1.jpg" alt="Kedi 1" class="cat-image">
+                <div class="message-bubble">
+                    Doktor Ceyda'nın doğum günü bugün. Kutladın mı doğum gününü? 🎉
+                </div>
+            </div>
+            
+            <div class="message right">
+                <img src="kedi2.jpg" alt="Kedi 2" class="cat-image">
+                <div class="message-bubble">
+                    Evet biliyorum ama hangi doktoru kutlayacağımı bilemediğim için kutlayamadım <span class="emoji">😢</span>
+                </div>
+            </div>
+            
+            <div class="message">
+                <img src="kedi1.jpg" alt="Kedi 1" class="cat-image">
+                <div class="message-bubble">
+                    İkisini de kutla o zaman! <span class="emoji">😸</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="buttons-container">
+            <button class="celebration-button" onclick="showCelebration('dentist')">
+                🦷 Diş Doktoru Ceyda
+            </button>
+            <button class="celebration-button" onclick="showCelebration('doctor')">
+                👩‍⚕️ Doktor Ceyda
+            </button>
+        </div>
+        
+        <div id="dentist-celebration" class="celebration-content">
+            <img src="dis-doktoru-ceyda.png" alt="Diş Doktoru Ceyda" class="celebration-image">
+            <div class="celebration-text">
+                🦷 Diş Doktoru Ceyda Doğum Günün Kutlu Olsun! 🎂✨
+            </div>
+        </div>
+        
+        <div id="doctor-celebration" class="celebration-content">
+            <img src="doktor-ceyda.png" alt="Doktor Ceyda" class="celebration-image">
+            <div class="celebration-text">
+                👩‍⚕️ Doktor Ceyda Doğum Günün Kutlu Olsun! 🎂✨
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showCelebration(type) {
+            // Tüm kutlama içeriklerini gizle
+            document.querySelectorAll('.celebration-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Seçilen kutlamayı göster
+            const celebrationId = type === 'dentist' ? 'dentist-celebration' : 'doctor-celebration';
+            document.getElementById(celebrationId).classList.add('active');
+            
+            // Kutlama bölümüne yumuşak kaydırma
+            document.getElementById(celebrationId).scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'center'
+            });
+        }
+    </script>
+</body>
+</html> 
